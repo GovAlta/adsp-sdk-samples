@@ -5,24 +5,31 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "prepare": "nx g @nx-dotnet/core:restore"
   },
   "private": true,
   "dependencies": {
     "express": "^4.18.1",
+    "passport": "^0.6.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@abgov/adsp-service-sdk": "^1.18.0",
     "@nrwl/cli": "14.7.16",
     "@nrwl/eslint-plugin-nx": "14.7.16",
     "@nrwl/express": "14.7.16",
     "@nrwl/jest": "14.7.16",
+    "@nrwl/js": "14.7.16",
     "@nrwl/linter": "14.7.16",
     "@nrwl/node": "14.7.16",
     "@nrwl/workspace": "14.7.16",
+    "@nx-dotnet/core": "^1.13.4",
+    "@nxrocks/nx-spring-boot": "^5.0.2",
     "@types/express": "4.17.13",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
+    "@types/passport": "^1.0.11",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "eslint": "~8.15.0",
@@ -34,5 +41,8 @@
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "typescript": "~4.8.2"
+  },
+  "overrides": {
+    "express": "^4.18.1"
   }
 }

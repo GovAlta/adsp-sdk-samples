@@ -1,0 +1,65 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hello-world-spring/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nxrocks/nx-spring-boot:build",
+      "options": {
+        "root": "apps/hello-world-spring"
+      },
+      "dependsOn": [
+        "^install"
+      ],
+      "outputs": [
+        "apps/hello-world-spring/target"
+      ]
+    },
+    "install": {
+      "executor": "@nxrocks/nx-spring-boot:install",
+      "options": {
+        "root": "apps/hello-world-spring"
+      },
+      "outputs": [
+        "apps/hello-world-spring/target"
+      ]
+    },
+    "test": {
+      "executor": "@nxrocks/nx-spring-boot:test",
+      "options": {
+        "root": "apps/hello-world-spring"
+      }
+    },
+    "clean": {
+      "executor": "@nxrocks/nx-spring-boot:clean",
+      "options": {
+        "root": "apps/hello-world-spring"
+      }
+    },
+    "run": {
+      "executor": "@nxrocks/nx-spring-boot:run",
+      "options": {
+        "root": "apps/hello-world-spring"
+      }
+    },
+    "serve": {
+      "executor": "@nxrocks/nx-spring-boot:serve",
+      "options": {
+        "root": "apps/hello-world-spring"
+      }
+    },
+    "build-image": {
+      "executor": "@nxrocks/nx-spring-boot:build-image",
+      "options": {
+        "root": "apps/hello-world-spring"
+      }
+    },
+    "build-info": {
+      "executor": "@nxrocks/nx-spring-boot:build-info",
+      "options": {
+        "root": "apps/hello-world-spring"
+      }
+    }
+  },
+  "tags": []
+}

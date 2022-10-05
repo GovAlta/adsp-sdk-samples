@@ -2,6 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "hello-world-express": "apps/hello-world-express"
+    "hello-world-express": "apps/hello-world-express",
+    "hello-world-asp": "apps/hello-world-asp",
+    "hello-world-spring": "apps/hello-world-spring"
   }
 }
