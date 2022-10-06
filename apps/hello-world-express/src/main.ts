@@ -13,15 +13,21 @@ async function initializeApp(): Promise<express.Application> {
   const app = express();
   app.use(express.json({ limit: '1mb' }));
 
+  // Initialization of ADSP SDK components...
+  // 1. Initialize service to access ADSP components.
   const { configurationHandler, eventService, tenantStrategy } = await initializeService(
     {
+      // 2. Configure ADSP via options properties.
       accessServiceUrl: new URL(environment.ACCESS_SERVICE_URL),
       realm: environment.REALM,
       directoryUrl: new URL(environment.DIRECTORY_URL),
+      // 3. Provide configuration of the service.
+      // 3a. Configure basic service information.
       serviceId: AdspId.parse(environment.CLIENT_ID),
-      clientSecret: environment.CLIENT_SECRET,
+      clientSecret: environment.CLIENT_SECRET,      
       displayName: 'Hello world service',
       description: 'Hello world sample for Express with ADSP SDK.',
+      // 3b. Register configuration definition.
       configuration: {
         description: 'Configuration of the hello world sample service.',
         schema: {
@@ -35,6 +41,7 @@ async function initializeApp(): Promise<express.Application> {
         },
       },
       combineConfiguration: (tenant) => tenant,
+      // 3c. Register service roles.
       roles: [
         {
           role: ServiceRoles.HelloWorlder,
@@ -42,6 +49,7 @@ async function initializeApp(): Promise<express.Application> {
             'Hello worlder role that allows user to post a message to the API.',
         },
       ],
+      // 3d. Register domain events.
       events: [
         {
           name: 'hello-world-event',
@@ -64,6 +72,7 @@ async function initializeApp(): Promise<express.Application> {
     }
   );
 
+  // 4. Add ADSP middleware to routes.
   passport.use('tenant', tenantStrategy);
 
   app.use(passport.initialize());

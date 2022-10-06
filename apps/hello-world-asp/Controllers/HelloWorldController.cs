@@ -14,6 +14,7 @@ public class HelloWorldController : ControllerBase
   public HelloWorldController(ILogger<HelloWorldController> logger, IEventService eventService)
   {
     _logger = logger;
+    // Inject the event service
     _eventService = eventService;
   }
 
@@ -22,7 +23,9 @@ public class HelloWorldController : ControllerBase
   [Authorize(Roles = ServiceRoles.HelloWorlder)]
   public async Task<string> Hello([FromBody] HelloWorldMessage message)
   {
+    // Retrieve user information from the request context.
     var user = HttpContext.GetAdspUser();
+    // Retrieve configuration from the request context; configuration of this service for current tenant is returned.
     var configuration = await HttpContext.GetConfiguration<HelloWorldConfiguration, HelloWorldConfiguration>();
 
     string? response = "Hello World!";
@@ -31,6 +34,7 @@ public class HelloWorldController : ControllerBase
       response = configuredResponse;
     }
     
+    // Send a domain event via the event service.
     await _eventService.Send(
       new DomainEvent<HelloWorldEvent>(
         HelloWorldEvent.EventName,

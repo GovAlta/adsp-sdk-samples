@@ -20,14 +20,18 @@ class HelloController {
   private EventService eventService;
 
   public HelloController(EventService eventService) {
+    // Inject the event service.
     this.eventService = eventService;
   }
 
   @PreAuthorize("hasRole('" + ServiceRoles.HelloWorlder + "')")
   @PostMapping("/hello-world/v1/hello")
   public String hello(@RequestBody HelloWorldMessage message) {
+        
     var context = AdspRequestContextHolder.current();
+    // Retrieve user information from the request context;
     var user = context.getUser();
+    // Retrieve configuration from the request context; configuration of this service for current tenant is returned.
     var configuration = context.getConfiguration(HelloWorldConfiguration.TypeReference).blockOptional();
 
     var response = "Hello World";
@@ -39,6 +43,7 @@ class HelloController {
       }
     }
 
+    // Send a domain event via the event service.
     eventService.send(new DomainEvent<HelloWorldEvent>(
         HelloWorldEvent.EventName,
         Instant.now(),

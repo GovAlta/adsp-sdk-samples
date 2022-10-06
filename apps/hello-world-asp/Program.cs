@@ -11,26 +11,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Bind configuration section.
+// Initialization of ADSP SDK components...
+// 1. Bind configuration section or otherwise configure the options.
 var adspConfiguration = builder.Configuration.GetSection("Adsp");
 builder.Services.Configure<AdspOptions>(adspConfiguration);
 
-// Add ADSP components.
+// 2. Add ADSP components to the service collection.
 builder.Services.AddAdspForService(options =>
 {
+  // 3. Provide configuration of the service.
+  // 3a. Configure basic service information.
   var serviceId = AdspId.Parse(adspConfiguration.GetValue<string>("ClientId"));
-  options.ServiceId = serviceId;
-  
+  options.ServiceId = serviceId;  
   options.DisplayName = "Hello world service";
   options.Description = "Hello world sample for ASP.NET Core with ADSP SDK.";
   
-  // Register configuration definition
+  // 3b. Register configuration definition.
   options.Configuration = new ConfigurationDefinition<HelloWorldConfiguration>(
     "Configuration of the hello world sample service.",
     (tenant, core) => tenant
   );
   
-  // Register service roles
+  // 3c. Register service roles.
   options.Roles = new[] {
     new ServiceRole {
       Role = ServiceRoles.HelloWorlder,
@@ -38,7 +40,7 @@ builder.Services.AddAdspForService(options =>
     }
   };
   
-  // Register domain events
+  // 3d. Register domain events.
   options.Events = new[] {
     new DomainEventDefinition<HelloWorldEvent>(
       HelloWorldEvent.EventName,
@@ -53,6 +55,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseHttpsRedirection();
 
+// 4. Add ADSP middleware.
 app.UseAdsp();
 app.UseAuthorization();
 
