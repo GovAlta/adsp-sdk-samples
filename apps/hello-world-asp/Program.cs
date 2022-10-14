@@ -49,7 +49,6 @@ builder.Services.AddAdspForService(options =>
   };
 });
 
-
 var app = builder.Build();
 
 app.UseSwagger();
@@ -58,6 +57,9 @@ app.UseHttpsRedirection();
 // 4. Add ADSP middleware.
 app.UseAdsp();
 app.UseAuthorization();
+app.UseAdspMetadata(new AdspMetadataOptions {
+  ApiPath = "hello-world/v1"
+});
 
 app.MapControllers();
 
