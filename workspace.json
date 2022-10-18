@@ -4,6 +4,7 @@
   "projects": {
     "hello-world-express": "apps/hello-world-express",
     "hello-world-asp": "apps/hello-world-asp",
-    "hello-world-spring": "apps/hello-world-spring"
+    "hello-world-spring": "apps/hello-world-spring",
+    "hello-world-spring-flux": "apps/hello-world-spring-flux"
   }
 }
