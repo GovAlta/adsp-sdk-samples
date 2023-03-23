@@ -1,4 +1,5 @@
 {
+  "name": "hello-world-express",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/hello-world-express/src",
   "projectType": "application",
@@ -48,7 +49,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/hello-world-express"],
+      "outputs": ["{workspaceRoot}/coverage/apps/hello-world-express"],
       "options": {
         "jestConfig": "apps/hello-world-express/jest.config.ts",
         "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
+  "name": "hello-world-spring",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/hello-world-spring/src",
   "projectType": "application",
@@ -8,21 +9,15 @@
       "options": {
         "root": "apps/hello-world-spring"
       },
-      "dependsOn": [
-        "^install"
-      ],
-      "outputs": [
-        "apps/hello-world-spring/target"
-      ]
+      "dependsOn": ["^install"],
+      "outputs": ["{projectRoot}/target"]
     },
     "install": {
       "executor": "@nxrocks/nx-spring-boot:install",
       "options": {
         "root": "apps/hello-world-spring"
       },
-      "outputs": [
-        "apps/hello-world-spring/target"
-      ]
+      "outputs": ["{projectRoot}/target"]
     },
     "test": {
       "executor": "@nxrocks/nx-spring-boot:test",

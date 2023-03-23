@@ -33,7 +33,7 @@ public class HelloWorldController : ControllerBase
     {
       response = configuredResponse;
     }
-    
+
     // Send a domain event via the event service.
     await _eventService.Send(
       new DomainEvent<HelloWorldEvent>(
@@ -48,7 +48,7 @@ public class HelloWorldController : ControllerBase
         }
       )
     );
-    
+
     return response;
   }
 }

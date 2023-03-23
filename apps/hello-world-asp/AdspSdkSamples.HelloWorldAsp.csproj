@@ -2,7 +2,7 @@
   
   <PropertyGroup>
     
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     
     <Nullable>enable</Nullable>
     
@@ -13,7 +13,7 @@
   
   <ItemGroup>
     
-    <PackageReference Include="Adsp.Sdk" Version="1.10.2" />
+    <PackageReference Include="Adsp.Sdk" Version="2.0.0" />
     
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     

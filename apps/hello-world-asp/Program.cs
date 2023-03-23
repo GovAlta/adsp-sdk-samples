@@ -22,16 +22,17 @@ builder.Services.AddAdspForService(options =>
   // 3. Provide configuration of the service.
   // 3a. Configure basic service information.
   var serviceId = AdspId.Parse(adspConfiguration.GetValue<string>("ClientId"));
-  options.ServiceId = serviceId;  
+  options.ServiceId = serviceId;
   options.DisplayName = "Hello world service";
   options.Description = "Hello world sample for ASP.NET Core with ADSP SDK.";
-  
+
   // 3b. Register configuration definition.
   options.Configuration = new ConfigurationDefinition<HelloWorldConfiguration>(
     "Configuration of the hello world sample service.",
     (tenant, core) => tenant
   );
-  
+  options.EnableConfigurationInvalidation = true;
+
   // 3c. Register service roles.
   options.Roles = new[] {
     new ServiceRole {
@@ -39,7 +40,7 @@ builder.Services.AddAdspForService(options =>
       Description = "Hello worlder role that allows user to post a message to the API."
     }
   };
-  
+
   // 3d. Register domain events.
   options.Events = new[] {
     new DomainEventDefinition<HelloWorldEvent>(
@@ -57,7 +58,8 @@ app.UseHttpsRedirection();
 // 4. Add ADSP middleware.
 app.UseAdsp();
 app.UseAuthorization();
-app.UseAdspMetadata(new AdspMetadataOptions {
+app.UseAdspMetadata(new AdspMetadataOptions
+{
   ApiPath = "hello-world/v1"
 });
 
