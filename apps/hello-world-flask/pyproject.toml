@@ -1,0 +1,38 @@
+[tool.coverage.run]
+branch = true
+source = [ "hello_world_flask" ]
+
+[tool.coverage.report]
+exclude_lines = ['if TYPE_CHECKING:']
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-fail-under=100 --cov-report html:'../../coverage/apps/hello-world-flask/html' --cov-report xml:'../../coverage/apps/hello-world-flask/coverage.xml' --junitxml='../../reports/apps/hello-world-flask/unittests/junit.xml' --html='../../reports/apps/hello-world-flask/unittests/html/index.html'"
+
+[tool.poetry]
+name = "hello_world_flask"
+version = "1.0.0"
+description = "Hello World example for Flask SDK"
+authors = [ ]
+license = 'Apache-2.0'
+readme = 'README.md'
+
+  [[tool.poetry.packages]]
+  include = "hello_world_flask"
+
+  [tool.poetry.dependencies]
+  adsp-service-flask-sdk = {path = "../../external/adsp_service_flask_sdk-1.0.0-py3-none-any.whl"}
+  python = ">=3.8.1,<3.11"
+  flask = "^2.2.3"
+
+  
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.2"
+pytest-coverage = "^0.0"
+pytest-html = "^3.2.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core==1.1.0"]
+build-backend = "poetry.core.masonry.api"
