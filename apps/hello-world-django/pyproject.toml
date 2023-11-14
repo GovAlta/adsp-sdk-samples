@@ -1,0 +1,37 @@
+[tool.coverage.run]
+branch = true
+source = [ "hello_world_django" ]
+
+[tool.coverage.report]
+exclude_lines = ['if TYPE_CHECKING:']
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-fail-under=0 --cov-report html:'../../coverage/apps/hello-world-django/html' --cov-report xml:'../../coverage/apps/hello-world-django/coverage.xml' --junitxml='../../reports/apps/hello-world-django/unittests/junit.xml' --html='../../reports/apps/hello-world-django/unittests/html/index.html'"
+
+[tool.poetry]
+name = "hello_world_django"
+version = "1.0.0"
+description = "Hello world example for Django SDK"
+authors = [ ]
+license = 'Apache-2.0'
+readme = 'README.md'
+
+  [[tool.poetry.packages]]
+  include = "hello_world_django"
+
+  [tool.poetry.dependencies]
+  python = ">=3.9,<3.11"
+  django = "^4.2.7"
+  python-dotenv = "^1.0.0"
+  adsp-service-django-sdk = {url = "https://github.com/GovAlta/adsp-monorepo/releases/download/adsp-service-django-sdk-v1.0.0/adsp_service_django_sdk-1.0.0-py3-none-any.whl"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.2"
+pytest-coverage = "^0.0"
+pytest-html = "^3.2.0"
+flake8 = "^6.0.0" 
+
+[build-system]
+requires = ["poetry-core==1.1.0"]
+build-backend = "poetry.core.masonry.api"

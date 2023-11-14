@@ -1,21 +1,21 @@
 {
-  "name": "hello-world-flask",
+  "name": "hello-world-django",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/hello-world-flask/hello_world_flask",
+  "sourceRoot": "apps/hello-world-django/hello_world_django",
   "targets": {
     "docs": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pydoc-markdown -p hello_world_flask --render-toc > docs/source/api.md",
-        "cwd": "apps/hello-world-flask"
+        "command": "pydoc-markdown -p hello_world_django --render-toc > docs/source/api.md",
+        "cwd": "apps/hello-world-django"
       }
     },
     "lock": {
       "executor": "nx:run-commands",
       "options": {
         "command": "poetry lock --no-update",
-        "cwd": "apps/hello-world-flask"
+        "cwd": "apps/hello-world-django"
       }
     },
     "add": {
@@ -34,7 +34,7 @@
       "executor": "@nxlv/python:build",
       "outputs": ["{projectRoot}/dist"],
       "options": {
-        "outputPath": "apps/hello-world-flask/dist",
+        "outputPath": "apps/hello-world-django/dist",
         "publish": false,
         "lockedVersions": false,
         "bundleLocalDependencies": true
@@ -52,34 +52,34 @@
     },
     "lint": {
       "executor": "@nxlv/python:flake8",
-      "outputs": ["{workspaceRoot}/reports/apps/hello-world-flask/pylint.txt"],
+      "outputs": ["{workspaceRoot}/reports/apps/hello-world-django/pylint.txt"],
       "options": {
-        "outputFile": "reports/apps/hello-world-flask/pylint.txt"
+        "outputFile": "reports/apps/hello-world-django/pylint.txt"
       }
     },
     "test": {
       "executor": "nx:run-commands",
       "outputs": [
-        "{workspaceRoot}/reports/apps/hello-world-flask/unittests",
-        "{workspaceRoot}/coverage/apps/hello-world-flask"
+        "{workspaceRoot}/reports/apps/hello-world-django/unittests",
+        "{workspaceRoot}/coverage/apps/hello-world-django"
       ],
       "options": {
         "command": "poetry run pytest tests/",
-        "cwd": "apps/hello-world-flask"
+        "cwd": "apps/hello-world-django"
       }
     },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "poetry run flask --app hello_world_flask run",
-        "cwd": "apps/hello-world-flask"
+        "command": "poetry run python manage.py runserver",
+        "cwd": "apps/hello-world-django"
       }
     },
     "tox": {
       "executor": "@nxlv/python:tox",
       "outputs": [
-        "{workspaceRoot}/reports/apps/hello-world-flask/unittests",
-        "{workspaceRoot}/coverage/apps/hello-world-flask"
+        "{workspaceRoot}/reports/apps/hello-world-django/unittests",
+        "{workspaceRoot}/coverage/apps/hello-world-django"
       ],
       "options": {
         "silent": false,
