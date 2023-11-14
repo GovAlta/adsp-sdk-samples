@@ -36,15 +36,17 @@ jobs:
           sed -i -r -e "s/TOKEN/${{ secrets.GITHUB_TOKEN }}/" apps/hello-world-spring/maven-settings.xml
           sed -i -r -e "s/TOKEN/${{ secrets.GITHUB_TOKEN }}/" apps/hello-world-spring-flux/maven-settings.xml
       - run: npm ci
+      - name: Get last successful commit
+        uses: nrwl/nx-set-shas@v3
       - name: Install
         shell: bash
-        run: npx nx affected --target=install --base=${{ github.base_ref }}
+        run: npx nx affected --target=install
       - name: Lint
         shell: bash
-        run: npx nx affected --target=lint --base=${{ github.base_ref }}
+        run: npx nx affected --target=lint
       - name: Test
         shell: bash
-        run: npx nx affected --target=test --base=${{ github.base_ref }}
+        run: npx nx affected --target=test
       - name: Build
         shell: bash
-        run: npx nx affected --configuration=production --target=build --base=${{ github.base_ref }}
+        run: npx nx affected --configuration=production --target=build
