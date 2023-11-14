@@ -15,7 +15,8 @@
     "install": {
       "executor": "@nxrocks/nx-spring-boot:install",
       "options": {
-        "root": "apps/hello-world-spring-flux"
+        "root": "apps/hello-world-spring-flux",
+        "args": ["--settings maven-settings.xml"]
       },
       "outputs": ["{projectRoot}/target"]
     },
