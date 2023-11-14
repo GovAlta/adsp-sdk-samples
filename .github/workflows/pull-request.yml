@@ -31,10 +31,12 @@ jobs:
       - uses: snok/install-poetry@v1
         with:
           version: "1.6.1"
-      - run: |
-          dotnet nuget add source --username adsp-sdk-samples --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/GovAlta/index.json"
-          sed -i -r -e "s/TOKEN/${{ secrets.GITHUB_TOKEN }}/" apps/hello-world-spring/maven-settings.xml
-          sed -i -r -e "s/TOKEN/${{ secrets.GITHUB_TOKEN }}/" apps/hello-world-spring-flux/maven-settings.xml
+      - name: Add Nuget source
+        run: dotnet nuget add source --username adsp-sdk-samples --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/GovAlta/index.json"          
+      - name: Add Maven repository
+        run: |
+          sed -i -r -e "s/TOKEN/${{ secrets.GITHUB_TOKEN }}/" apps/hello-world-spring/.mvn/maven-settings.xml
+          sed -i -r -e "s/TOKEN/${{ secrets.GITHUB_TOKEN }}/" apps/hello-world-spring-flux/.mvn/maven-settings.xml
       - run: npm ci
       - name: Get last successful commit
         uses: nrwl/nx-set-shas@v3
