@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from adsp_service_django_sdk import get_metadata
 from django.contrib import admin
 from django.urls import path
 
@@ -22,4 +23,5 @@ from .views import hello
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("hello-world/v1/hello", hello),
+    path("", get_metadata)
 ]

@@ -7,7 +7,7 @@ description = "ADSP Service SDK for Flask"
 optional = false
 python-versions = ">=3.9,<3.11"
 files = [
-    {file = "adsp_service_flask_sdk-1.0.0-py3-none-any.whl", hash = "sha256:153682ebab4fc10602b341597e4af1689b586f28a3e4846d7e499d79c581e63c"},
+    {file = "adsp_service_flask_sdk-1.0.0-py3-none-any.whl", hash = "sha256:0df4a69a5ae28eaa1cf68a8a02c5f45f6b3081346e8061e2292ced5d0160821f"},
 ]
 
 [package.dependencies]
@@ -40,7 +40,7 @@ zipp = {version = "3.17.0", markers = "python_version >= \"3.9\" and python_vers
 
 [package.source]
 type = "url"
-url = "https://github.com/GovAlta/adsp-monorepo/releases/download/adsp-service-flask-sdk-v1.3.0/adsp_service_flask_sdk-1.0.0-py3-none-any.whl"
+url = "https://github.com/GovAlta/adsp-monorepo/releases/download/adsp-service-flask-sdk-v1.3.1/adsp_service_flask_sdk-1.0.0-py3-none-any.whl"
 
 [[package]]
 name = "anyio"
@@ -852,4 +852,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.11"
-content-hash = "76a85fc0a97596f9550883b67067d98075e018ac6b96f7f9a4323f4a72e693b5"
+content-hash = "194334f06691f6816afac771f20d1517af1b3c13d9e026797c346eed0cb912a3"
