@@ -129,6 +129,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# ADSP settings
 ADSP_ACCESS_SERVICE_URL = env.get(
     "ADSP_ACCESS_SERVICE_URL", "https://access.adsp-dev.gov.ab.ca"
 )

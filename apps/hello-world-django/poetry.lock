@@ -7,7 +7,7 @@ description = "ADSP Service SDK for Django"
 optional = false
 python-versions = ">=3.9,<3.11"
 files = [
-    {file = "adsp_service_django_sdk-1.0.0-py3-none-any.whl", hash = "sha256:77345f5e6a7cc491791d2e60806d1680b1762bea00f2dc294906950bb117ae96"},
+    {file = "adsp_service_django_sdk-1.0.0-py3-none-any.whl", hash = "sha256:34b878e7a03a1ae4446a0bc0a4a01f866cd4a6201c096fe32ef801b70eb08c16"},
 ]
 
 [package.dependencies]
@@ -35,7 +35,7 @@ urnparse = {version = "0.2.1", markers = "python_version >= \"3.9\" and python_v
 
 [package.source]
 type = "url"
-url = "https://github.com/GovAlta/adsp-monorepo/releases/download/adsp-service-django-sdk-v1.0.0/adsp_service_django_sdk-1.0.0-py3-none-any.whl"
+url = "https://github.com/GovAlta/adsp-monorepo/releases/download/adsp-service-django-sdk-v1.0.2/adsp_service_django_sdk-1.0.0-py3-none-any.whl"
 
 [[package]]
 name = "anyio"
@@ -726,4 +726,4 @@ tests = ["check-manifest", "isort", "pydocstyle", "pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.11"
-content-hash = "9d740ae146df40537c2b0d11ad98843683438795f3fd385ce355b8297c89c02d"
+content-hash = "a65bb7b6ca2ff7492aae53df0a6ee61e29cf0e8f920506e7accbe9a9bb71646d"

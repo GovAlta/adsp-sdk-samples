@@ -1,5 +1,5 @@
 from datetime import datetime
-from adsp_service_flask_sdk import DomainEvent, User
+from adsp_service_django_sdk import DomainEvent, User
 
 
 HELLO_WORLD_EVENT = "hello-world-event"

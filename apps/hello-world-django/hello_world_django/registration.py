@@ -16,7 +16,7 @@ def convert_config(tenant_config, _) -> Dict[str, Any]:
 
 registration = AdspRegistration(
     "Hello world service",
-    "Hello world example for Flask",
+    "Hello world example for Django",
     configuration=ConfigurationDefinition(
         "Configuration of the hello world sample service.",
         {

@@ -1,10 +1,13 @@
 import json
 from adsp_service_django_sdk import adsp, get_user
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 from .event import create_hello_event
 
 
+@csrf_exempt
 def hello(request):
     if request.method != 'POST':
         return HttpResponse("Method Not Allowed", status=405)
